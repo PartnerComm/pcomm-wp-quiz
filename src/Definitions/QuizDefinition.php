@@ -22,7 +22,7 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
 
     public function getQuestions($object) {
         $correctAnswers = get_post_meta($object['id'], 'pc-quiz-correct');
-        $wrongAnswers = get_post_meta($object['id'], 'pc-quiz-wrong');
+        $wrongAnswers = get_post_meta($object['id'], 'pc-quiz-incorrect');
 
         return [
             'correct' => $correctAnswers,
