@@ -9,7 +9,7 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
     protected $rest = true;
     protected $restFields = [
         'featured_image_url' => ['get' => 'getFeaturedImageUrl'],
-        'questions' => ['get' => 'getQuestions']
+        'answers' => ['get' => 'getAnswers']
     ];
     protected $taxonomies = []; //remove defaults
 
@@ -20,7 +20,7 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
         return $post->getPostThumbnail();
     }
 
-    public function getQuestions($object) {
+    public function getAnswers($object) {
         $correctAnswers = get_post_meta($object['id'], 'pc-quiz-correct');
         $wrongAnswers = get_post_meta($object['id'], 'pc-quiz-incorrect');
 
