@@ -1,12 +1,8 @@
 {
   "name": "pcomm/wp-quiz",
   "description": "Plugin to setup quiz post type",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "wordpress-plugin",
-  "dist": {
-    "type": "git",
-    "url": "git@github.com:PartnerComm/pcomm-wp-quiz.git"
-  },
   "repositories": [
     {
       "type": "composer",
