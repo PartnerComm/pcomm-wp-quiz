@@ -1,11 +1,11 @@
 {
   "name": "pcomm/wp-quiz",
   "description": "Plugin to setup quiz post type",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "wordpress-plugin",
   "dist": {
     "type": "git",
-    "url": "git@partnercomm.git.beanstalkapp.com:/partnercomm/pcomm-wp-quiz.git"
+    "url": "git@github.com:PartnerComm/pcomm-wp-quiz.git"
   },
   "repositories": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "type": "vcs",
-      "url": "git@partnercomm.git.beanstalkapp.com:/partnercomm/pcomm-wp-utilities.git"
+      "url": "git@github.com:PartnerComm/pcomm-wp-utilities.git"
     }
   ],
   "authors": [
@@ -25,7 +25,7 @@
   ],
   "require": {
     "php": ">=5.6",
-    "pcomm/wp-utilities": "dev-master"
+    "pcomm/wp-utilities": "1.0.*"
   },
   "autoload": {
     "psr-4": {
