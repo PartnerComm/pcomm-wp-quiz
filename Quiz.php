@@ -27,7 +27,7 @@ class Quiz
     ];
 
     protected $taxonomies = [
-    
+        '\PComm\WPQuiz\Definitions\QuestionTypeDefinition'
     ];
 
     public function __construct(\PComm\WPUtils\Post\Handler $postHandler,

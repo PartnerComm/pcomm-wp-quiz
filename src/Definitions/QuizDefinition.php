@@ -9,7 +9,9 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
     protected $rest = true;
     protected $restFields = [
         'featured_image_url' => ['get' => 'getFeaturedImageUrl'],
-        'answers' => ['get' => 'getAnswers']
+        'answers' => ['get' => 'getAnswers'],
+        'hint' => ['get' => 'getHints'],
+        'question_types' => ['get' => 'getQuestionTypes']
     ];
     protected $taxonomies = []; //remove defaults
 
@@ -27,6 +29,29 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
         return [
             'correct' => $correctAnswers,
             'incorrect' => $wrongAnswers
+        ];
+    }
+
+    public function getHints($object) {
+        $hintLabel = get_post_meta($object['id'], 'pc-hint-label');
+        $hintUrl = get_post_meta($object['id'], 'pc-hint-url');
+
+        return [
+            'hintlabel' => $hintLabel,
+            'hinturl' => $hintUrl
+        ];
+    }
+
+    public function getQuestionTypes() {
+        $questiontypes = get_the_terms( $post->ID, 'question-type' );
+        $questiontypes_links = array();
+
+        foreach ( $questiontypes as $questiontype ) {
+            $questiontypes_links[] = $questiontype->name;
+        }
+
+        return [
+            'question_types' => $questiontypes_links
         ];
     }
 
