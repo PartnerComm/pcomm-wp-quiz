@@ -1,7 +1,7 @@
 {
   "name": "pcomm/wp-quiz",
   "description": "Plugin to setup quiz post type",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "wordpress-plugin",
   "repositories": [
     {
