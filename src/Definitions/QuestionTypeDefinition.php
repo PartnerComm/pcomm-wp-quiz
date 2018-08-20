@@ -8,4 +8,7 @@ class QuestionTypeDefinition extends \PComm\WPUtils\Taxonomy\DefaultDefinition {
     protected $rest = true;
     protected $hierarchical = true;
     protected $postType = ['quiz'];
+
+    
 }
+

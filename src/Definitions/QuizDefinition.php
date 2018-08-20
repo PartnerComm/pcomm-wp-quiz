@@ -10,6 +10,7 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
     protected $restFields = [
         'featured_image_url' => ['get' => 'getFeaturedImageUrl'],
         'answers' => ['get' => 'getAnswers'],
+        'question_menu_order' => ['get' => 'getMenuOrder'],
         'hint' => ['get' => 'getHints'],
         'question_types' => ['get' => 'getQuestionTypes']
     ];
@@ -20,6 +21,12 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
         $wp_post = get_post($object['id']);
         $post = new \PComm\WPUtils\Post\Post($wp_post);
         return $post->getPostThumbnail();
+    }
+
+    public function getMenuOrder($object) {
+        // the object here is actually an array, so getting the post object
+        $wp_post = get_post($object['id']);
+        return $wp_post->menu_order;
     }
 
     public function getAnswers($object) {
@@ -45,13 +52,24 @@ class QuizDefinition extends \PComm\WPUtils\Post\DefaultDefinition {
     public function getQuestionTypes() {
         $questiontypes = get_the_terms( $post->ID, 'question-type' );
         $questiontypes_links = array();
+        $questiontypes_active = $taxonomies;
+        $questiontypes_active_array = array();
 
         foreach ( $questiontypes as $questiontype ) {
             $questiontypes_links[] = $questiontype->name;
+            if (get_term_meta($questiontype->term_id)) {
+                $questiontypes_active_array[] = 1;
+            } else {
+                $questiontypes_active_array[] = 0;
+            }
+
         }
 
+
+
         return [
-            'question_types' => $questiontypes_links
+            'question_types' => $questiontypes_links,
+            'question_types_active' => $questiontypes_active_array
         ];
     }
 
